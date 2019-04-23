@@ -1,1 +1,2 @@
-Cambio realizado para generar fallos.
+CAMBIO CORRECTIVO 1
+La condición para terminar el ciclo for no era correcta.
