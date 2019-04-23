@@ -1,2 +1,2 @@
-CAMBIO PERFECTIVO 2
-Se podrá mostrar la nota mas baja de una asignatura.
+CAMBIO ADAPTATIVO 2
+No se podrá acceder a los datos sin un login.

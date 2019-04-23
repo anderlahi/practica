@@ -12,3 +12,4 @@
 
 void cargarDatos(void);
 void menu(void);
+int contra(void);

@@ -1,4 +1,5 @@
 
+#include <string.h>
 #include "notas.h"
 
 struct alumno {
@@ -301,4 +302,23 @@ void cargarDatos(void){
 	}*/
 	
 	printf("Datos cargados\n");
+}
+int contra(void){
+	char usuario[100];
+	char contra[100];
+	int ret;
+	
+	printf("Introduce usuario: ");
+	scanf("%s", usuario);
+	
+	printf("Introduce contrasena:");
+	scanf("%s", contra);
+	
+	if((strcmp("admin", usuario) == 0)&&(strcmp("admin", contra) == 0)){
+		ret = 1;
+	}
+	else{
+		ret = 0;
+	}
+	return ret;
 }
