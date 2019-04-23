@@ -1,2 +1,1 @@
-CAMBIO ADAPTATIVO 2
-No se podrá acceder a los datos sin un login.
+Cambio realizado para generar fallos.
