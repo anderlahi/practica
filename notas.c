@@ -50,9 +50,10 @@ void menu(void){
 	
 	switch(eleccion){
 		case 1:
-			
-			printf("Introduce el alumno:");
-			scanf("%i", &alumno);
+			do{
+				printf("Introduce el alumno:");
+				scanf("%i", &alumno);	
+			}while(!((alumno<5)&&(alumno>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if(notas[i].alumnoId == alumno){
 					printf("%f\n", notas[i].nota);
@@ -61,8 +62,10 @@ void menu(void){
 			printf("\n");
 			break;
 		case 2: 
-			printf("Introduce el alumno:");
-			scanf("%i", &alumno);
+			do{
+				printf("Introduce el alumno:");
+				scanf("%i", &alumno);	
+			}while(!((alumno<5)&&(alumno>0)));
 			printf("Introduce la asignatura:");
 			scanf("%i", &asignatura);
 			for(i = 0; i < MAX_NOTAS; i++){
