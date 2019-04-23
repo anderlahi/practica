@@ -1,2 +1,2 @@
-CAMBIO PREVENTIVO
-Que el usuario no pueda pedir la nota de un alumno que no existe.
+CAMBIO PREVENTIVO 2
+Que el usuario no pueda pedir la nota de una asignatura que no existe.

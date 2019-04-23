@@ -66,8 +66,10 @@ void menu(void){
 				printf("Introduce el alumno:");
 				scanf("%i", &alumno);	
 			}while(!((alumno<5)&&(alumno>0)));
-			printf("Introduce la asignatura:");
-			scanf("%i", &asignatura);
+			do{
+				printf("Introduce la asignatura:");
+				scanf("%i", &asignatura);
+			}while(!((asignatura<11)&&(asignatura>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if((notas[i].alumnoId == alumno)&&(notas[i].asignaturaId == asignatura)){
 					printf("%.2f\n", notas[i].nota);
@@ -76,8 +78,10 @@ void menu(void){
 			printf("\n");
 			break;
 		case 3:
-			printf("Introduce la asignatura:");
-			scanf("%i", &asignatura);
+			do{
+				printf("Introduce la asignatura:");
+				scanf("%i", &asignatura);
+			}while(!((asignatura<11)&&(asignatura>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if(notas[i].asignaturaId == asignatura){
 					sumaNotas = sumaNotas + notas[i].nota;
