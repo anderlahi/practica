@@ -32,7 +32,7 @@ struct nota notas[MAX_NOTAS];
 
 void menu(void){
 	int eleccion, alumno, asignatura, i, j, curso;
-	float sumaNotas = 0;
+	float sumaNotas = 0, nota;
 	float media;
 	
 	do{
@@ -42,7 +42,8 @@ void menu(void){
 	printf("2.	Notas por asignatura por alumno\n");
 	printf("3.	Nota media de una asignatura\n");
 	printf("4.	Nota  media por curso\n");
-	printf("5. 	Salir\n");
+	printf("5.	Nota mas alta de una signatura\n");
+	printf("6. 	Salir\n");
 	printf("**********************************\n");
 	printf("\nIntroduce eleccion: ");
 	scanf("%i", &eleccion);
@@ -110,12 +111,32 @@ void menu(void){
 			sumaNotas = 0; 
 			break;
 		case 5:
+			do{
+				printf("Introduce la asignatura:");
+				scanf("%i", &asignatura);
+			}while(!((asignatura<11)&&(asignatura>0)));
+			
+			nota = 0;
+			
+			for(i = 0; i < MAX_NOTAS; i++){
+				if(notas[i].asignaturaId == asignatura){
+					if(nota < notas[i].nota){
+						nota = notas[i].nota;
+					}
+					else{
+						nota = nota;
+					}
+				}
+			}  
+			printf("La nota mas alta es %f.\n", nota);
+			break;
+		case 6:
 			printf("Hasta pronto!");
 			break;
 		default:
 			printf("\nEsta opcion no esta implementada");
 	}
-	}while(eleccion!=5);
+	}while(eleccion!=6);
 }
 
 void cargarDatos(void){
