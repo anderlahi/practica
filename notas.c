@@ -1,4 +1,5 @@
 
+#include <string.h>
 #include "notas.h"
 
 struct alumno {
@@ -32,7 +33,7 @@ struct nota notas[MAX_NOTAS];
 
 void menu(void){
 	int eleccion, alumno, asignatura, i, j, curso;
-	float sumaNotas = 0;
+	float sumaNotas = 0, nota;
 	float media;
 	
 	do{
@@ -42,7 +43,9 @@ void menu(void){
 	printf("2.	Notas por asignatura por alumno\n");
 	printf("3.	Nota media de una asignatura\n");
 	printf("4.	Nota  media por curso\n");
-	printf("5. 	Salir\n");
+	printf("5.	Nota mas alta de una asignatura\n");
+	printf("6.	Nota mas baja de una asignatura\n");
+	printf("7. 	Salir\n");
 	printf("**********************************\n");
 	printf("\nIntroduce eleccion: ");
 	scanf("%i", &eleccion);
@@ -50,38 +53,45 @@ void menu(void){
 	
 	switch(eleccion){
 		case 1:
-			
-			printf("Introduce el alumno:");
-			scanf("%i", &alumno);
+			do{
+				printf("Introduce el alumno:");
+				scanf("%i", &alumno);	
+			}while(!((alumno<5)&&(alumno>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if(notas[i].alumnoId == alumno){
-					printf("%f\n", notas[i].nota);
+					printf("%% %.2f\n", notas[i].nota*10);
 				}
 			}  
 			printf("\n");
 			break;
 		case 2: 
-			printf("Introduce el alumno:");
-			scanf("%i", &alumno);
-			printf("Introduce la asignatura:");
-			scanf("%i", &asignatura);
+			do{
+				printf("Introduce el alumno:");
+				scanf("%i", &alumno);	
+			}while(!((alumno<5)&&(alumno>0)));
+			do{
+				printf("Introduce la asignatura:");
+				scanf("%i", &asignatura);
+			}while(!((asignatura<11)&&(asignatura>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if((notas[i].alumnoId == alumno)&&(notas[i].asignaturaId == asignatura)){
-					printf("%.2f\n", notas[i].nota);
+					printf("%% %.2f\n", notas[i].nota*10);
 				}
 			}  
 			printf("\n");
 			break;
 		case 3:
-			printf("Introduce la asignatura:");
-			scanf("%i", &asignatura);
+			do{
+				printf("Introduce la asignatura:");
+				scanf("%i", &asignatura);
+			}while(!((asignatura<11)&&(asignatura>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if(notas[i].asignaturaId == asignatura){
 					sumaNotas = sumaNotas + notas[i].nota;
 				}
 			}  
 			media = sumaNotas/MAX_ALUMNOS;
-			printf("%.2f\n", media);
+			printf("%% %.2f\n", media*10);
 			media = 0;
 			sumaNotas = 0;
 				break;
@@ -98,17 +108,57 @@ void menu(void){
 				}
 			}
 			media = sumaNotas/(MAX_ALUMNOS*MAX_ASIGNATURAS/2);
-			printf("%.2f\n", media);
+			printf("%% %.2f\n", media*10);
 			media = 0;
 			sumaNotas = 0; 
 			break;
 		case 5:
+			do{
+				printf("Introduce la asignatura:");
+				scanf("%i", &asignatura);
+			}while(!((asignatura<11)&&(asignatura>0)));
+			
+			nota = 0;
+			
+			for(i = 0; i < MAX_NOTAS; i++){
+				if(notas[i].asignaturaId == asignatura){
+					if(nota < notas[i].nota){
+						nota = notas[i].nota;
+					}
+					else{
+						nota = nota;
+					}
+				}
+			}  
+			printf("La nota mas alta es %% %.2f.\n", nota*10);
+			break;
+		case 6:
+			do{
+				printf("Introduce la asignatura:");
+				scanf("%i", &asignatura);
+			}while(!((asignatura<11)&&(asignatura>0)));
+			
+			nota = 10;
+			
+			for(i = 0; i < MAX_NOTAS; i++){
+				if(notas[i].asignaturaId == asignatura){
+					if(nota > notas[i].nota){
+						nota = notas[i].nota;
+					}
+					else{
+						nota = nota;
+					}
+				}
+			}  
+			printf("La nota mas baja es %% %.2f.\n", nota*10);
+			break;
+		case 7:
 			printf("Hasta pronto!");
 			break;
 		default:
 			printf("\nEsta opcion no esta implementada");
 	}
-	}while(eleccion!=5);
+	}while(eleccion!=7);
 }
 
 void cargarDatos(void){
@@ -252,4 +302,23 @@ void cargarDatos(void){
 	}*/
 	
 	printf("Datos cargados\n");
+}
+int contra(void){
+	char usuario[100];
+	char contra[100];
+	int ret;
+	
+	printf("Introduce usuario: ");
+	scanf("%s", usuario);
+	
+	printf("Introduce contrasena:");
+	scanf("%s", contra);
+	
+	if((strcmp("admin", usuario) == 0)&&(strcmp("admin", contra) == 0)){
+		ret = 1;
+	}
+	else{
+		ret = 0;
+	}
+	return ret;
 }

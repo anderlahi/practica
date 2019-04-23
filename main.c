@@ -6,7 +6,12 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main() {
-	 cargarDatos();
-	 menu();
+	int access;
+	do{
+		access = contra();	
+	}while(access == 0);
+	
+	cargarDatos();
+	menu();
 	return 0;
 }
