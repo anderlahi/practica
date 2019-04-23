@@ -1,2 +1,2 @@
-CAMBIO PERFECTIVO 1
-Se podrá mostrar la nota mas alta de una asignatura.
+CAMBIO PERFECTIVO 2
+Se podrá mostrar la nota mas baja de una asignatura.
