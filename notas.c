@@ -68,7 +68,7 @@ void menu(void){
 			do{
 				printf("Introduce el alumno:");
 				scanf("%i", &alumno);	
-			}while(!((alumno<=5)&&(alumno>0)));
+			}while(!((alumno<5)&&(alumno>0)));
 			do{
 				printf("Introduce la asignatura:");
 				scanf("%i", &asignatura);

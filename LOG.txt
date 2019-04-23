@@ -1,2 +1,2 @@
-CAMBIO CORRECTIVO 1
-La condición para terminar el ciclo for no era correcta.
+CAMBIO CORRECTIVO 2
+La condición para terminar el ciclo do while no era correcta.
