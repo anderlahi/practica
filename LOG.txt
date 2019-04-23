@@ -1,2 +1,2 @@
-CAMBIO PREVENTIVO 2
-Que el usuario no pueda pedir la nota de una asignatura que no existe.
+CAMBIO PERFECTIVO 2
+Se podrá mostrar la nota mas baja de una asignatura.
