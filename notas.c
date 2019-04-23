@@ -58,7 +58,7 @@ void menu(void){
 			}while(!((alumno<5)&&(alumno>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if(notas[i].alumnoId == alumno){
-					printf("%f\n", notas[i].nota);
+					printf("%% %.2f\n", notas[i].nota*10);
 				}
 			}  
 			printf("\n");
@@ -74,7 +74,7 @@ void menu(void){
 			}while(!((asignatura<11)&&(asignatura>0)));
 			for(i = 0; i < MAX_NOTAS; i++){
 				if((notas[i].alumnoId == alumno)&&(notas[i].asignaturaId == asignatura)){
-					printf("%.2f\n", notas[i].nota);
+					printf("%% %.2f\n", notas[i].nota*10);
 				}
 			}  
 			printf("\n");
@@ -90,7 +90,7 @@ void menu(void){
 				}
 			}  
 			media = sumaNotas/MAX_ALUMNOS;
-			printf("%.2f\n", media);
+			printf("%% %.2f\n", media*10);
 			media = 0;
 			sumaNotas = 0;
 				break;
@@ -107,7 +107,7 @@ void menu(void){
 				}
 			}
 			media = sumaNotas/(MAX_ALUMNOS*MAX_ASIGNATURAS/2);
-			printf("%.2f\n", media);
+			printf("%% %.2f\n", media*10);
 			media = 0;
 			sumaNotas = 0; 
 			break;
@@ -129,7 +129,7 @@ void menu(void){
 					}
 				}
 			}  
-			printf("La nota mas alta es %.2f.\n", nota);
+			printf("La nota mas alta es %% %.2f.\n", nota*10);
 			break;
 		case 6:
 			do{
@@ -149,7 +149,7 @@ void menu(void){
 					}
 				}
 			}  
-			printf("La nota mas baja es %.2f.\n", nota);
+			printf("La nota mas baja es %% %.2f.\n", nota*10);
 			break;
 		case 7:
 			printf("Hasta pronto!");
