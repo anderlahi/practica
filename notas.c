@@ -22,7 +22,7 @@ struct asignatura {
 struct nota {
   int alumnoId;
   int asignaturaId;
-  int nota;
+  float nota;
 };
 
 struct alumno alumnos[MAX_ALUMNOS];
@@ -30,12 +30,89 @@ struct curso cursos[MAX_CURSOS];
 struct asignatura asignaturas[MAX_ASIGNATURAS];
 struct nota notas[MAX_NOTAS];
 
-void funcionprueba(void){
-	printf("He entrado en la funcion\n");
+void menu(void){
+	int eleccion, alumno, asignatura, i, j, curso;
+	float sumaNotas = 0;
+	float media;
+	
+	do{
+
+	printf("************** MENU **************\n");
+	printf("1.	Notas de un alumno\n");
+	printf("2.	Notas por asignatura por alumno\n");
+	printf("3.	Nota media de una asignatura\n");
+	printf("4.	Nota  media por curso\n");
+	printf("5. 	Salir\n");
+	printf("**********************************\n");
+	printf("\nIntroduce eleccion: ");
+	scanf("%i", &eleccion);
+
+	
+	switch(eleccion){
+		case 1:
+			
+			printf("Introduce el alumno:");
+			scanf("%i", &alumno);
+			for(i = 0; i < MAX_NOTAS; i++){
+				if(notas[i].alumnoId == alumno){
+					printf("%f\n", notas[i].nota);
+				}
+			}  
+			printf("\n");
+			break;
+		case 2: 
+			printf("Introduce el alumno:");
+			scanf("%i", &alumno);
+			printf("Introduce la asignatura:");
+			scanf("%i", &asignatura);
+			for(i = 0; i < MAX_NOTAS; i++){
+				if((notas[i].alumnoId == alumno)&&(notas[i].asignaturaId == asignatura)){
+					printf("%.2f\n", notas[i].nota);
+				}
+			}  
+			printf("\n");
+			break;
+		case 3:
+			printf("Introduce la asignatura:");
+			scanf("%i", &asignatura);
+			for(i = 0; i < MAX_NOTAS; i++){
+				if(notas[i].asignaturaId == asignatura){
+					sumaNotas = sumaNotas + notas[i].nota;
+				}
+			}  
+			media = sumaNotas/MAX_ALUMNOS;
+			printf("%.2f\n", media);
+			media = 0;
+			sumaNotas = 0;
+				break;
+		case 4:
+			printf("Introduce el curso:");
+			scanf("%i", &curso);
+			for(j = 0; j < MAX_ASIGNATURAS; j++){
+				if(curso == asignaturas[j].cursoId){
+					for(i = 0; i < MAX_NOTAS; i++){
+						if(notas[i].asignaturaId == asignaturas[j].id){
+							sumaNotas = sumaNotas + notas[i].nota;
+						}
+					}		  
+				}
+			}
+			media = sumaNotas/(MAX_ALUMNOS*MAX_ASIGNATURAS/2);
+			printf("%.2f\n", media);
+			media = 0;
+			sumaNotas = 0; 
+			break;
+		case 5:
+			printf("Hasta pronto!");
+			break;
+		default:
+			printf("\nEsta opcion no esta implementada");
+	}
+	}while(eleccion!=5);
 }
+
 void cargarDatos(void){
 	
-	printf("He entrado en la 2 funcion\n");
 	alumnos[0].id = 1;
 	strcpy(alumnos[0].nombre, "Ainara");
 	strcpy(alumnos[0].primApellido, "Saroe");
@@ -171,7 +248,7 @@ void cargarDatos(void){
 	notas[39].nota = 10;
 	
 /*	for(i = 0; i < MAX_NOTAS ; i++){
-		printf(" %i  %i  %i\n", notas[i].alumnoId, notas[i].asignaturaId, notas[i].nota);
+		printf(" %i  %i  %f\n", notas[i].alumnoId, notas[i].asignaturaId, notas[i].nota);
 	}*/
 	
 	printf("Datos cargados\n");

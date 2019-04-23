@@ -9,5 +9,6 @@
 #define MAX_NOTAS 40
 
 
-void funcionprueba(void);
+
 void cargarDatos(void);
+void menu(void);
